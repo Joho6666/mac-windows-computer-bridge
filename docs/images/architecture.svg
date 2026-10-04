@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="860" viewBox="0 0 1600 860" role="img" aria-labelledby="title description">
+  <title id="title">Mac and Windows Computer Bridge Architecture</title>
+  <desc id="description">Two-way MCP and worker communication between a Mac and Windows computer over a private Tailscale network using SSH and SCP.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#eef3fb"/>
+    </linearGradient>
+    <linearGradient id="macAccent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3977e8"/>
+      <stop offset="1" stop-color="#6655d9"/>
+    </linearGradient>
+    <linearGradient id="winAccent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#087eaa"/>
+      <stop offset="1" stop-color="#0b9b8b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#17335b" flood-opacity=".12"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M1 1 10 6 1 11" fill="none" stroke="#3977e8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrowTeal" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M1 1 10 6 1 11" fill="none" stroke="#0b9b8b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .title { fill: #14233b; font-size: 38px; font-weight: 700; }
+      .subtitle { fill: #60718a; font-size: 18px; }
+      .cardTitle { fill: #152844; font-size: 25px; font-weight: 700; }
+      .eyebrow { fill: #687b95; font-size: 13px; font-weight: 700; letter-spacing: 1.6px; }
+      .item { fill: #243956; font-size: 18px; font-weight: 600; }
+      .detail { fill: #70819a; font-size: 15px; }
+      .lane { font-size: 15px; font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1600" height="860" rx="28" fill="url(#background)"/>
+  <circle cx="1440" cy="110" r="150" fill="#dfeaff" opacity=".45"/>
+  <circle cx="150" cy="760" r="190" fill="#dff4f0" opacity=".48"/>
+
+  <text x="72" y="84" class="eyebrow">PRIVATE, TWO-WAY TASK EXECUTION</text>
+  <text x="72" y="137" class="title">Mac ↔ Windows Computer Bridge</text>
+  <text x="72" y="174" class="subtitle">Each computer can run an MCP client and dispatch work to the other over SSH.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="220" width="420" height="474" rx="24" fill="#ffffff"/>
+    <rect x="72" y="220" width="420" height="12" rx="6" fill="url(#macAccent)"/>
+    <rect x="1108" y="220" width="420" height="474" rx="24" fill="#ffffff"/>
+    <rect x="1108" y="220" width="420" height="12" rx="6" fill="url(#winAccent)"/>
+  </g>
+
+  <g transform="translate(112 267)">
+    <rect width="52" height="38" rx="7" fill="none" stroke="#5274dc" stroke-width="3"/>
+    <path d="M-5 45h62M18 39l-4 6m24-6 4 6" fill="none" stroke="#5274dc" stroke-width="3" stroke-linecap="round"/>
+    <text x="76" y="16" class="eyebrow">MAC</text>
+    <text x="76" y="47" class="cardTitle">AI client + worker</text>
+  </g>
+  <g transform="translate(1148 267)">
+    <rect width="52" height="38" rx="7" fill="none" stroke="#118c9b" stroke-width="3"/>
+    <path d="M-5 45h62M18 39l-4 6m24-6 4 6" fill="none" stroke="#118c9b" stroke-width="3" stroke-linecap="round"/>
+    <text x="76" y="16" class="eyebrow">WINDOWS</text>
+    <text x="76" y="47" class="cardTitle">AI client + worker</text>
+  </g>
+
+  <g>
+    <circle cx="121" cy="367" r="6" fill="#536ee0"/>
+    <text x="143" y="374" class="item">Local stdio MCP server</text>
+    <text x="143" y="400" class="detail">tools target local or peer</text>
+    <circle cx="121" cy="447" r="6" fill="#536ee0"/>
+    <text x="143" y="454" class="item">LaunchAgent worker</text>
+    <text x="143" y="480" class="detail">starts in the signed-in Mac session</text>
+    <circle cx="121" cy="527" r="6" fill="#536ee0"/>
+    <text x="143" y="534" class="item">Python jobs + managed files</text>
+    <text x="143" y="560" class="detail">queue, logs, artifacts, SHA-256</text>
+    <circle cx="121" cy="607" r="6" fill="#536ee0"/>
+    <text x="143" y="614" class="item">Optional Peekaboo adapter</text>
+    <text x="143" y="640" class="detail">desktop actions need user-session access</text>
+  </g>
+
+  <g>
+    <circle cx="1157" cy="367" r="6" fill="#0b998c"/>
+    <text x="1179" y="374" class="item">Local stdio MCP server</text>
+    <text x="1179" y="400" class="detail">can dispatch back to the Mac</text>
+    <circle cx="1157" cy="447" r="6" fill="#0b998c"/>
+    <text x="1179" y="454" class="item">Logon scheduled-task worker</text>
+    <text x="1179" y="480" class="detail">interactive user session, not Session 0</text>
+    <circle cx="1157" cy="527" r="6" fill="#0b998c"/>
+    <text x="1179" y="534" class="item">Python jobs + managed files</text>
+    <text x="1179" y="560" class="detail">serialized queue, status, artifacts</text>
+    <circle cx="1157" cy="607" r="6" fill="#0b998c"/>
+    <text x="1179" y="614" class="item">Optional WinApp / UIA adapter</text>
+    <text x="1179" y="640" class="detail">app controls require per-app validation</text>
+  </g>
+
+  <text x="800" y="263" text-anchor="middle" class="eyebrow">PRIVATE TAILNET</text>
+  <rect x="554" y="281" width="492" height="332" rx="26" fill="#ffffff" opacity=".76" stroke="#d6dfed" stroke-width="2"/>
+  <rect x="617" y="309" width="366" height="42" rx="21" fill="#eef3ff"/>
+  <text x="800" y="336" text-anchor="middle" class="lane" fill="#435fc8">Tailscale • SSH • SCP</text>
+
+  <path d="M492 420h606" fill="none" stroke="#3977e8" stroke-width="4" marker-end="url(#arrowBlue)"/>
+  <rect x="663" y="386" width="274" height="34" rx="17" fill="#ffffff"/>
+  <text x="800" y="409" text-anchor="middle" class="lane" fill="#3977e8">Mac → Windows</text>
+  <path d="M1108 520H502" fill="none" stroke="#0b9b8b" stroke-width="4" marker-end="url(#arrowTeal)"/>
+  <rect x="665" y="486" width="270" height="34" rx="17" fill="#ffffff"/>
+  <text x="800" y="509" text-anchor="middle" class="lane" fill="#07877b">Windows → Mac</text>
+
+  <text x="800" y="566" text-anchor="middle" class="detail">Job IDs • status checks • chunked files</text>
+  <text x="800" y="590" text-anchor="middle" class="detail">No public worker port is required</text>
+
+  <rect x="72" y="732" width="1456" height="76" rx="18" fill="#152844"/>
+  <circle cx="110" cy="770" r="9" fill="#43c6a6"/>
+  <text x="136" y="777" fill="#ffffff" font-size="16" font-weight="700">Security boundary</text>
+  <text x="310" y="777" fill="#d6e1f0" font-size="16">private tailnet</text>
+  <text x="500" y="777" fill="#8fa4c1" font-size="18">•</text>
+  <text x="530" y="777" fill="#d6e1f0" font-size="16">dedicated SSH keys</text>
+  <text x="745" y="777" fill="#8fa4c1" font-size="18">•</text>
+  <text x="775" y="777" fill="#d6e1f0" font-size="16">verified host keys</text>
+  <text x="970" y="777" fill="#8fa4c1" font-size="18">•</text>
+  <text x="1000" y="777" fill="#d6e1f0" font-size="16">jobs run as the signed-in user</text>
+</svg>

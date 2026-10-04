@@ -13,7 +13,6 @@ known_hosts
 *.zip
 *.exe
 *.dll
-*.png
 *.xlsx
 *.pdf
 *.csv

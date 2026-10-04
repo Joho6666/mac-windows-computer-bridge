@@ -2,6 +2,10 @@
 
 A small, private-by-network bridge for running file, Python, and desktop jobs between a Mac and a Windows PC. Tailscale provides private reachability; SSH authenticates each direction; a local MCP server exposes the remote worker to an AI client.
 
+![Mac and Windows bridge architecture](docs/images/architecture.svg)
+
+See [`docs/IMAGES.md`](docs/IMAGES.md) for adding or replacing repository images.
+
 ```mermaid
 flowchart LR
   A[Mac AI / MCP client] --> B[Mac bridge MCP]
